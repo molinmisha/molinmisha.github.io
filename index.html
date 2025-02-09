@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV с анимацией</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            height: auto;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            font-size: 25px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+            flex-wrap: wrap;
+        }
+
+        .date {
+            width: 150px;
+            flex-shrink: 0;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex-grow: 1;
+        }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+        }
+		
+		
+		.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 25px;
+    text-align: left;
+    width: 90%;
+    max-width: 800px; /* Ограничиваем ширину */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет перенос строк */
+    align-items: flex-start; /* Выравнивание */
+    gap: 20px;
+}
+
+.date {
+    min-width: 150px; /* Фиксированная ширина для дат */
+    text-align: right;
+}
+
+.info {
+    flex: 1; /* Занимает оставшееся место */
+    min-width: 200px;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container" id="content">
+    <div class="row">
+        <div class="date">Misha Molin</div>
+        <div class="info"></div>
+    </div>
+    <div class="row">
+        <div class="date">2024-2025</div>
+        <div class="info">
+            <div>Met Corinna</div>
+            <div>Started to search for a new job</div>
+            <div>Looking for a good position</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="date">2006-2023</div>
+        <div class="info">
+            <div>Some boring jobs</div>
+            <div>Full stacking nonstop</div>
+            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
+            <div>Even more and more and more</div>
+        </div>
+    </div>
+   
+   <div class="row">
+        <div id="date2" class="date">2006-2023</div>
+        <div id="info2" class="info">
+            <div>Some boring jobs</div>
+            <div>full stacking nonstop</div>
+            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
+			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
+        </div>
+    </div>
+   
+   <div class="row">
+        <div id="date2" class="date">2006-2023</div>
+        <div id="info2" class="info">
+            <div>Some boring jobs</div>
+            <div>full stacking nonstop</div>
+            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
+			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
+        </div>
+    </div>
+   
+   <div class="row">
+        <div id="date2" class="date">2006-2023</div>
+        <div id="info2" class="info">
+            <div>Some boring jobs</div>
+            <div>full stacking nonstop</div>
+            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
+			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
+        </div>
+    </div>
+	
+</div>
+
+<script>
+    function animateText() {
+        const elements = document.querySelectorAll('.date, .info div');
+        let letters = [];
+
+        elements.forEach(element => {
+            const text = element.textContent;
+            element.innerHTML = '';
+
+            text.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.classList.add('letter');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                element.appendChild(span);
+                letters.push(span);
+            });
+        });
+
+        letters = gsap.utils.shuffle(letters);
+
+        gsap.to(letters, {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            rotation: 0,
+            duration: 0.4,
+            ease: "power3.out",
+            stagger: {
+                amount: 0.3,
+                from: "random"
+            },
+            startAt: {
+                opacity: 0,
+                x: () => Math.random() * 600 - 300,
+                y: () => Math.random() * 400 - 200,
+                rotation: () => Math.random() * 360
+            },
+            onComplete: () => animateLivingText(letters)
+        });
+    }
+
+    function animateLivingText(letters) {
+        letters.forEach(letter => {
+            function randomMotion() {
+                gsap.to(letter, {
+                    x: () => Math.random() * 4 - 2,
+                    y: () => Math.random() * 4 - 2,
+                    rotation: () => Math.random() * 10 - 5,
+                    duration: 0.5 + Math.random() * 1,
+                    ease: "power1.inOut",
+                    yoyo: true,
+                    repeat: 1,
+                    onComplete: randomMotion
+                });
+            }
+            setTimeout(randomMotion, Math.random() * 2000);
+        });
+    }
+
+    window.onload = animateText;
+</script>
+
+</body>
+</html>
