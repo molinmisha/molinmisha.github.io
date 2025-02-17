@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV с анимацией</title>
+    <title>Misha Molin - CV - 0524890013</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
     <style>
         body {
@@ -20,153 +20,205 @@
         .container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            font-size: 25px;
+            gap: 8px;
+            font-size: 16px;
             text-align: left;
             max-width: 800px;
             margin: 0 auto;
+            line-height: 1.4;
+            padding-left: 40px; /* Увеличен отступ слева для всего контейнера */
         }
 
-        .row {
-            display: flex;
-            gap: 20px;
+        .section-header {
+            position: relative;
+            padding-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .header-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #4a9eff;
+            opacity: 0;
+            transform: scaleX(0);
+            box-shadow: 0 0 8px rgba(74, 158, 255, 0.8);
+        }
+
+        h2 {
             font-size: 20px;
-            flex-wrap: wrap;
+            margin: 0;
         }
 
-        .date {
-            width: 150px;
-            flex-shrink: 0;
+        h1 {
+            font-size: 22px;
+            margin: 0 0 8px 0;
         }
 
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            flex-grow: 1;
+        h3 {
+            font-size: 18px;
+            margin: 8px 0 4px 0;
+            font-weight: normal;
         }
 
-        .letter {
+        .info-line {
+            margin: 0 0 4px 0;
+            padding-left: 32px; /* Увеличен отступ слева для текста */
+            position: relative;
+        }
+
+        .info-line:before {
+            content: "•";
+            position: absolute;
+            left: 16px; /* Увеличен отступ маркера от левой границы */
+            color: white;
+        }
+
+        .word {
             display: inline-block;
             opacity: 0;
+            white-space: pre; /* Сохраняем пробелы между словами */
         }
-		
-		
-		.container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    font-size: 25px;
-    text-align: left;
-    width: 90%;
-    max-width: 800px; /* Ограничиваем ширину */
-}
 
-.row {
-    display: flex;
-    flex-wrap: wrap; /* Позволяет перенос строк */
-    align-items: flex-start; /* Выравнивание */
-    gap: 20px;
-}
+        .italic {
+            font-style: italic;
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            opacity: 0.8;
+        }
 
-.date {
-    min-width: 150px; /* Фиксированная ширина для дат */
-    text-align: right;
-}
+        .contact-info {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+        }
 
-.info {
-    flex: 1; /* Занимает оставшееся место */
-    min-width: 200px;
-}
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: white;
+                color: black;
+            }
 
+            .header-line {
+                background-color: #0066cc;
+                box-shadow: 0 0 8px rgba(0, 102, 204, 0.5);
+            }
+
+            .info-line:before {
+                color: black;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                font-size: 18px;
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container" id="content">
-    <div class="row">
-        <div class="date">Misha Molin</div>
-        <div class="info"></div>
+    <h1 class="main-header">Misha Molin</h1>
+    
+    <div class="contact-info">052-4890013</div>
+    <div class="contact-info">ultramolin@gmail.com</div>
+    <div class="contact-info">1980, divorced + 3, Israel - Kfar Saba</div>
+
+    <div class="section-header">
+        <div class="header-line"></div>
+        <h2 class="main-header">Summary</h2>
     </div>
-    <div class="row">
-        <div class="date">2024-2025</div>
-        <div class="info">
-            <div>Met Corinna</div>
-            <div>Started to search for a new job</div>
-            <div>Looking for a good position</div>
-        </div>
+    <div class="info-line">Happy Full-Stack .NET/angular software engineer with 20 years of experience looking for a new full-time hybrid/remote position</div>
+    <div class="info-line">Fluent in C#, JS, SQL, Russian, English, Hebrew ;)</div>
+    <div class="info-line">Excellent communication skills, innovative thinking, result-oriented, hands-on approach</div>
+    <div class="info-line">References and recommendations available upon request</div>
+
+    <div class="section-header">
+        <div class="header-line"></div>
+        <h2 class="main-header">Experience</h2>
     </div>
-    <div class="row">
-        <div class="date">2006-2023</div>
-        <div class="info">
-            <div>Some boring jobs</div>
-            <div>Full stacking nonstop</div>
-            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
-            <div>Even more and more and more</div>
-        </div>
+
+    <h3>Senior Software Engineer at Optimove, Tel Aviv, Israel - Marketing</h3>
+    <div class="italic">2021 - 2023</div>
+    <div class="info-line">Designed and developed web sites and services</div>
+    <div class="info-line">.NET Core, C#, Angular, SQL, Snowflake, Docker</div>
+    <div class="info-line">Integrated multiple third-party services</div>
+    <div class="info-line">Fixed more bugs than I created (but not guaranteed)</div>
+
+    <h3>Senior Software Engineer at Matrix, Tel Aviv, Israel - Software Company</h3>
+    <div class="italic">2014 - 2019</div>
+    <div class="info-line">Full software development life cycle: analysis, design, development, and testing</div>
+    <div class="info-line">ASP.NET, C#, LINQ, Web API, WCF, AJAX, IIS, SQL Server, Redis</div>
+    <div class="info-line">Bootstrap, AngularJS, JavaScript, jQuery, CSS, HTML, JSON</div>
+    <div class="info-line">Application design and implementation in collaboration with project managers and clients</div>
+
+    <h3>Senior Software Engineer at NESS, Tel Aviv, Israel - Software Services</h3>
+    <div class="italic">2011 - 2013</div>
+    <div class="info-line">ASP.NET, C#, SQL, LINQ, WCF, AJAX, IIS, T-SQL, JavaScript, jQuery, CSS, HTML, JSON</div>
+    <div class="info-line">Unit testing and Windows services</div>
+    <div class="info-line">Experience with various design patterns</div>
+    <div class="info-line">Authored design documents, technical specifications, and UML class diagrams</div>
+
+    <div class="section-header">
+        <div class="header-line"></div>
+        <h2 class="main-header">Education</h2>
     </div>
-   
-   <div class="row">
-        <div id="date2" class="date">2006-2023</div>
-        <div id="info2" class="info">
-            <div>Some boring jobs</div>
-            <div>full stacking nonstop</div>
-            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
-			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
-        </div>
+    <h3>Technion - Undergraduate Study (B.Sc.), Faculty of Education in Technology and Science, Computer Science</h3>
+    <div class="italic">2001 - 2004</div>
+
+    <h3>High School Certificate - Wizo Canada Nahalal High School</h3>
+    <div class="italic">1996 - 1999</div>
+
+    <div class="section-header">
+        <div class="header-line"></div>
+        <h2 class="main-header">Military Service</h2>
     </div>
-   
-   <div class="row">
-        <div id="date2" class="date">2006-2023</div>
-        <div id="info2" class="info">
-            <div>Some boring jobs</div>
-            <div>full stacking nonstop</div>
-            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
-			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
-        </div>
-    </div>
-   
-   <div class="row">
-        <div id="date2" class="date">2006-2023</div>
-        <div id="info2" class="info">
-            <div>Some boring jobs</div>
-            <div>full stacking nonstop</div>
-            <div>bobob bo bo bo bbbb boring. Let check more text here</div>
-			<div>bobob bo bo bo bbbb boring. Let check more text here  and even more and more and more</div>
-        </div>
-    </div>
-	
+    <h3>Inventory Management Chief, Naffah, IDF</h3>
+    <div class="italic">1999 - 2001</div>
 </div>
 
 <script>
     function animateText() {
-        const elements = document.querySelectorAll('.date, .info div');
-        let letters = [];
+        const allElements = document.querySelectorAll('.info-line, h1, h2, h3, .italic, .contact-info');
+        let allWords = [];
 
-        elements.forEach(element => {
+        allElements.forEach(element => {
             const text = element.textContent;
             element.innerHTML = '';
 
-            text.split('').forEach(char => {
+            text.split(' ').forEach(word => {
                 const span = document.createElement('span');
-                span.classList.add('letter');
-                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.classList.add('word');
+                span.textContent = word + ' '; // Добавляем пробел после каждого слова
                 element.appendChild(span);
-                letters.push(span);
+                allWords.push(span);
             });
         });
 
-        letters = gsap.utils.shuffle(letters);
-
-        gsap.to(letters, {
+        gsap.to(allWords, {
             opacity: 1,
             x: 0,
             y: 0,
             rotation: 0,
-            duration: 0.4,
+            duration: 0.6,
             ease: "power3.out",
             stagger: {
-                amount: 0.3,
+                amount: 0.5,
                 from: "random"
             },
             startAt: {
@@ -175,14 +227,32 @@
                 y: () => Math.random() * 400 - 200,
                 rotation: () => Math.random() * 360
             },
-            onComplete: () => animateLivingText(letters)
+            onComplete: () => {
+                const mainHeaders = document.querySelectorAll('.main-header');
+                let headerWords = [];
+                
+                mainHeaders.forEach(header => {
+                    headerWords = headerWords.concat(Array.from(header.querySelectorAll('.word')));
+                });
+                
+                animateLivingText(headerWords);
+
+                // Анимация линий
+                gsap.to('.header-line', {
+                    opacity: 1,
+                    scaleX: 1,
+                    duration: 1,
+                    ease: "power2.inOut",
+                    stagger: 0.2
+                });
+            }
         });
     }
 
-    function animateLivingText(letters) {
-        letters.forEach(letter => {
+    function animateLivingText(words) {
+        words.forEach(word => {
             function randomMotion() {
-                gsap.to(letter, {
+                gsap.to(word, {
                     x: () => Math.random() * 4 - 2,
                     y: () => Math.random() * 4 - 2,
                     rotation: () => Math.random() * 10 - 5,
