@@ -26,7 +26,7 @@
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.4;
-            padding-left: 40px; /* Увеличен отступ слева для всего контейнера */
+            padding-left: 40px;
         }
 
         .section-header {
@@ -65,25 +65,25 @@
 
         .info-line {
             margin: 0 0 -4px 0;
-            padding-left: 32px; /* Увеличен отступ слева для текста */
+            padding-left: 32px;
             position: relative;
         }
 
         .info-line:before {
             content: "•";
             position: absolute;
-            left: 16px; /* Увеличен отступ маркера от левой границы */
+            left: 16px;
             color: white;
         }
 
         .word {
             display: inline-block;
             opacity: 0;
-            white-space: pre; /* Сохраняем пробелы между словами */
+            white-space: pre;
         }
 
         .italic {
-			color: gray;
+            color: gray;
             font-style: italic;
             margin: -15px 0 4px 0;
             font-size: 15px;
@@ -175,6 +175,23 @@
     <div class="info-line">Experience with various design patterns</div>
     <div class="info-line">Authored design documents, technical specifications, and UML class diagrams</div>
 
+    <h3>Website Developer at Getonic, Tel Aviv, Israel – Startup (Digital Product Sales Platform)</h3>
+    <div class="italic">2009 - 2011</div>
+    <div class="info-line">ASP.NET, C#, SQL Server, Web Services</div>
+    <div class="info-line">HTML, CSS, XML, AJAX, JavaScript, Flash module integration</div>
+    <div class="info-line">Integrated SMS micro-payments via Mblox</div>
+    <div class="info-line">PayPal API integration</div>
+	
+    <h3>Website Developer at BEZEQ, Netanya – Telephony Service Provider</h3>
+    <div class="italic">2006 - 2009</div>
+    <div class="info-line">ASP.NET, C#, SQL Server, HTML, CSS, JavaScript, AJAX</div>
+	
+    <h3>Web Programmer, Network and System Administrator at Nesher City Library, Nesher, Israel</h3>
+    <div class="italic">2001 - 2006</div>
+    <div class="info-line">Developed web client applications and presentations </div>
+    <div class="info-line">Network administration</div>
+    <div class="info-line">Computer hardware and peripherals repair and maintenance</div>
+
     <div class="section-header">
         <div class="header-line"></div>
         <h2 class="main-header">Education</h2>
@@ -194,6 +211,64 @@
 </div>
 
 <script>
+    function styleJobTitles() {
+        // Находим секцию Experience
+        const experienceSection = Array.from(document.querySelectorAll('h2'))
+            .find(h2 => h2.textContent.trim() === 'Experience');
+        
+        if (!experienceSection) return;
+
+        // Находим все h3 заголовки после секции Experience до следующей секции
+        const jobTitles = [];
+        let currentElement = experienceSection.parentElement.nextElementSibling;
+        
+        while (currentElement && !currentElement.classList.contains('section-header')) {
+            if (currentElement.tagName === 'H3') {
+                jobTitles.push(currentElement);
+            }
+            currentElement = currentElement.nextElementSibling;
+        }
+
+        // Для каждого заголовка работы
+        jobTitles.forEach(titleElement => {
+            const words = Array.from(titleElement.querySelectorAll('.word'));
+            const atIndex = words.findIndex(word => word.textContent.trim() === 'at');
+            
+            if (atIndex === -1) return;
+
+            // Группируем слова до и после 'at'
+            const titleWords = words.slice(0, atIndex);
+            const companyWords = words.slice(atIndex + 1);
+
+            // Создаем функцию для анимации изменения стиля
+            const applyStyleWithAnimation = (elements, style) => {
+                gsap.to(elements, {
+                    color: style.color,
+                    fontWeight: style.fontWeight,
+                    fontSize: style.fontSize,
+                    textTransform: style.textTransform,
+                    duration: 0.5,
+                    ease: "power2.inOut"
+                });
+            };
+
+            // Применяем стили с анимацией
+            applyStyleWithAnimation(titleWords, {
+                color: '#4a9eff',
+                //fontWeight: 'bold',
+                //fontSize: '1.1em',
+                //textTransform: 'uppercase'
+            });
+
+            applyStyleWithAnimation(companyWords, {
+                color: '#ff9e4a',
+                //fontWeight: 'bold',
+                fontSize: '1em',
+                textTransform: 'none'
+            });
+        });
+    }
+
     function animateText() {
         const allElements = document.querySelectorAll('.info-line, h1, h2, h3, .italic, .contact-info');
         let allWords = [];
@@ -205,7 +280,7 @@
             text.split(' ').forEach(word => {
                 const span = document.createElement('span');
                 span.classList.add('word');
-                span.textContent = word + ' '; // Добавляем пробел после каждого слова
+                span.textContent = word + ' ';
                 element.appendChild(span);
                 allWords.push(span);
             });
@@ -238,7 +313,6 @@
                 
                 animateLivingText(headerWords);
 
-                // Анимация линий
                 gsap.to('.header-line', {
                     opacity: 1,
                     scaleX: 1,
@@ -246,6 +320,9 @@
                     ease: "power2.inOut",
                     stagger: 0.2
                 });
+
+                // Вызываем функцию стилизации после завершения основной анимации
+                styleJobTitles();
             }
         });
     }
