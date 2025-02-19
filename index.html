@@ -136,7 +136,7 @@
             right: 10px;
             background: #4a9eff;
             color: white;
-            padding: 10px 15px;
+            padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
             font-size: 14px;
@@ -145,6 +145,9 @@
             align-items: center;
             gap: 5px;
             transition: background 0.3s;
+            opacity: 0;
+            transform: scale(0.8);
+            visibility: hidden;
         }
         .download-btn:hover {
             background: #377ac6;
@@ -157,7 +160,7 @@
     </style>
 </head>
 <body>
- <a class="download-btn" href="cv_Misha_Molin.docx" download>
+ <a class="download-btn" id="downloadBtn" href="cv_Misha_Molin.docx" download>
         <img src="icons8-ms-word-48.png" alt="Download Icon"> 
         Download
 </a>
@@ -378,6 +381,12 @@
             setTimeout(randomMotion, Math.random() * 2000);
         });
     }
+	
+	  window.addEventListener('load', function() {
+            const downloadBtn = document.getElementById("downloadBtn");
+            downloadBtn.style.visibility = "visible";
+            gsap.to(downloadBtn, {opacity: 1, scale: 1, duration: 5, ease: "power2.out"});
+        });
 
     window.onload = animateText;
 </script>
