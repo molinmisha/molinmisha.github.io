@@ -129,16 +129,45 @@
                 font-size: 20px;
             }
         }
+		
+		.download-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #4a9eff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #377ac6;
+        }
+        .download-btn img {
+            width: 20px;
+            height: 20px;
+        }
+		
     </style>
 </head>
 <body>
-
+ <a class="download-btn" href="cv_misha_molin.docx" download>
+        <img src="icons8-ms-word-48.png" alt="Download Icon"> 
+        Download
+</a>
+	
 <div class="container" id="content">
     <h1 class="main-header">Misha Molin</h1>
     
     <div class="contact-info">052-4890013</div>
     <div class="contact-info">ultramolin@gmail.com</div>
-    <div class="contact-info">1980, divorced + 3, Israel - Kfar Saba</div>
+    <div class="contact-info">Israel, Kfar Saba</div>
 
     <div class="section-header">
         <div class="header-line"></div>
@@ -161,6 +190,11 @@
     <div class="info-line">Integrated multiple third-party services</div>
     <div class="info-line">Fixed more bugs than I created (but not guaranteed)</div>
 
+    <h3>Backend Developer at Cheetah, Netanya, Israel - eCommerce for Food Distributors</h3>
+    <div class="italic">2019 - 2020</div>
+    <div class="info-line">Ruby on Rails: The year I realized that rails are for trains</div>
+    <div class="info-line">A year of coding that made me appreciate C# like never before</div>
+	
     <h3>Senior Software Engineer at Matrix, Tel Aviv, Israel - Software Company</h3>
     <div class="italic">2014 - 2019</div>
     <div class="info-line">Full software development life cycle: analysis, design, development, and testing</div>
